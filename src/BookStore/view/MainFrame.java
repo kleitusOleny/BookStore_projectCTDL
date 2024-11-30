@@ -1,15 +1,19 @@
-package BookStore;
+package BookStore.view;
+
+import BookStore.constructor.*;
+import BookStore.util.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class MainFrame extends JFrame {
     JMenuBar mnb;
     JMenu menu;
     JMenuItem mni;
-    
+    Book book;
     public MainFrame() throws HeadlessException{
         super();
         setTitle("Book Store");
@@ -41,6 +45,17 @@ public class MainFrame extends JFrame {
         menu.add(mni);
         
         mni = new JMenuItem("Update Book");
+        mni.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    book = new FileLoader().loadBook();
+                    System.out.println(book);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
         menu.add(mni);
         mnb.add(menu,JMenuBar.getDefaultLocale());
         
