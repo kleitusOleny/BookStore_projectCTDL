@@ -1,4 +1,4 @@
-package BookStore;
+package BookStore.constructor;
 
 public interface ManageBookStore {
 
