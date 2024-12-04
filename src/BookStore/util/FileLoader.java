@@ -5,6 +5,7 @@ import BookStore.constructor.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -36,7 +37,7 @@ public class FileLoader {
         
         while ((line = br.readLine()) != null) {
             String[] str = line.split("\\|");
-            customer = new Customer(str[0].trim(),str[1].trim(),Integer.parseInt(str[2].trim()));
+            customer = new Customer(str[0].trim(),str[1].trim(),Integer.parseInt(str[2].trim()),new ArrayList<>());
             setCustomer.add(customer);
         }
         br.close();
