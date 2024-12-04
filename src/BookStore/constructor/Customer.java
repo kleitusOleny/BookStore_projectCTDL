@@ -1,5 +1,6 @@
 package BookStore.constructor;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class Customer {
@@ -13,5 +14,21 @@ public class Customer {
         this.name = name;
         this.phone = phone;
         this.orderByAcc = orderByAcc;
+    }
+    
+    public boolean checkIDCustomer(String id){
+        return id.equals(idCustomer);
+    }
+    @Override
+    public boolean equals(Object obj){
+        if (obj == null || !(obj instanceof Customer)){
+            return false;
+        }else {
+            Customer that = (Customer) obj;
+            return this.idCustomer.equals(that.idCustomer) &&
+                    this.name.equals(that.name) &&
+                    this.phone == that.phone &&
+                    this.orderByAcc.containsAll(that.orderByAcc);
+        }
     }
 }
