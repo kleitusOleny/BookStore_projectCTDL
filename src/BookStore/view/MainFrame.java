@@ -8,12 +8,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Set;
 
 public class MainFrame extends JFrame {
     JMenuBar mnb;
     JMenu menu;
     JMenuItem mni;
-    Book book;
+    Set book;
     public MainFrame() throws HeadlessException{
         super();
         setTitle("Book Store");
