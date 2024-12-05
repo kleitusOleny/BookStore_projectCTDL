@@ -31,4 +31,14 @@ public class Customer {
                     this.orderByAcc.containsAll(that.orderByAcc);
         }
     }
+    
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "idCustomer='" + idCustomer + '\'' +
+                ", name='" + name + '\'' +
+                ", phone=" + phone +
+                ", orderByAcc=" + orderByAcc +
+                '}';
+    }
 }
