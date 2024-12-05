@@ -1,7 +1,6 @@
-package BookStore.constructor.src.BookStore.util;
+package BookStore.util;
 
-import BookStore.constructor.src.BookStore.constructor.Book;
-import BookStore.constructor.src.BookStore.constructor.Customer;
+import BookStore.constructor.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

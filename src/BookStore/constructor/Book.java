@@ -1,4 +1,4 @@
-package BookStore.constructor.src.BookStore.constructor;
+package BookStore.constructor;
 
 public class Book {
     private String idBook;

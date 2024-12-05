@@ -1,6 +1,6 @@
-package BookStore.constructor.src.BookStore.constructor;
+package BookStore.constructor;
 
-import BookStore.constructor.src.BookStore.util.FileLoader;
+import BookStore.util.FileLoader;
 
 import java.io.IOException;
 import java.util.HashMap;
