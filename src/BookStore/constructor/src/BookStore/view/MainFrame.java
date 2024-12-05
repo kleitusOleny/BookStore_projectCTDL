@@ -1,6 +1,5 @@
-package BookStore.view;
+package BookStore.constructor.src.BookStore.view;
 
-import BookStore.constructor.*;
 import BookStore.util.*;
 
 import javax.swing.*;

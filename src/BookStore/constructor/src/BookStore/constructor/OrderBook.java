@@ -1,4 +1,4 @@
-package BookStore.constructor;
+package BookStore.constructor.src.BookStore.constructor;
 
 public class OrderBook {
     private Book book;

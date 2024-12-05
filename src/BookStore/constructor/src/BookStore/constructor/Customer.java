@@ -1,6 +1,5 @@
-package BookStore.constructor;
+package BookStore.constructor.src.BookStore.constructor;
 
-import java.util.HashSet;
 import java.util.List;
 
 public class Customer {
