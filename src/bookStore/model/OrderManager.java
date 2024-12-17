@@ -1,4 +1,4 @@
-package BookStore.constructor;
+package bookStore.model;
 
 import java.util.List;
 

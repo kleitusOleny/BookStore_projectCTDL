@@ -1,6 +1,5 @@
-package BookStore.constructor;
+package bookStore.model;
 
-import java.util.HashSet;
 import java.util.List;
 
 public class Customer {
@@ -21,7 +20,7 @@ public class Customer {
     }
     @Override
     public boolean equals(Object obj){
-        if (obj == null || !(obj instanceof Customer)){
+        if (obj == null || obj.getClass().equals(this.getClass())){
             return false;
         }else {
             Customer that = (Customer) obj;
