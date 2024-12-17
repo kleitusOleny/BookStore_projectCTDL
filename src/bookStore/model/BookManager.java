@@ -1,6 +1,6 @@
-package BookStore.constructor;
+package bookStore.model;
 
-import BookStore.util.FileLoader;
+import bookStore.util.FileLoader;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -14,7 +14,7 @@ public class BookManager {
         this.listBook = new HashMap<>();
     }
     
-    //Method used to add books to the list
+    //Add books to the list
     //if the book is not there then add it to the list
     //if the book is there then add it
     public void addBook(Book book, int n) {
@@ -26,7 +26,7 @@ public class BookManager {
         }
     }
     
-    //Method used to check if this book is still available
+    //Check if this book is still available
     public boolean isAvailable(String idBook) {
         Book book = null;
         if ((book = findBookByID(idBook)) != null) {

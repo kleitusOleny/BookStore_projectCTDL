@@ -1,4 +1,4 @@
-package BookStore.constructor;
+package bookStore.model;
 
 import java.util.HashSet;
 import java.util.Set;

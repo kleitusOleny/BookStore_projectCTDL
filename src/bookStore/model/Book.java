@@ -1,4 +1,4 @@
-package BookStore.constructor;
+package bookStore.model;
 
 public class Book {
     private String idBook;
@@ -103,7 +103,7 @@ public class Book {
     
     @Override
     public boolean equals(Object obj) {
-        if (null == obj || !(this instanceof Book)){
+        if (null == obj || obj.getClass().equals(this.getClass())){
             return false;
         }else {
             Book that = (Book) obj;
