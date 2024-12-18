@@ -16,8 +16,8 @@ public class BookStoreManagerPanel extends JPanel {
         card = new CardLayout();
         
         mainPanel = new JPanel(card);
-        bookPanel = new BookPanel();
         mainMenuPanel = new MainMenuPanel();
+        bookPanel = new BookManagerPanel();
         orderPanel = new OrderManagerPanel();
         
         mainPanel.add("bookPanel",bookPanel);
@@ -28,6 +28,8 @@ public class BookStoreManagerPanel extends JPanel {
         
         add(mainPanel,BorderLayout.CENTER);
         add(createSidePanel(),BorderLayout.WEST);
+        
+        
     }
     public void showLayout(String nameLayout){
         card.show(mainPanel,nameLayout);

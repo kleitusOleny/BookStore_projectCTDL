@@ -2,11 +2,15 @@ package bookStore.view;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import java.awt.*;
 
 public class OrderManagerPanel extends JPanel {
-    
+    JButton btnCreateOrder,btnSearchOrder, buttonAddBook, buttonFind;
+    JTextField textIDOrder, textNameCus, textIDC, textDateOrder, textDelivery;
+    JTextField textIDB,textTitle,textAuthor, textPulish, textPrice, textYearPub;
+    DefaultTableModel model;
+    JTable table;
+    JScrollPane scrollPane;
     public OrderManagerPanel(){
         setLayout(new BorderLayout());
         JPanel orderInformationPanel = new OrderInformationPanel();
@@ -15,7 +19,7 @@ public class OrderManagerPanel extends JPanel {
         add(listInOrderPanel,BorderLayout.CENTER);
         add(orderInformationPanel,BorderLayout.NORTH);
     }
-    public static class OrderInformationPanel extends JPanel{
+    public class OrderInformationPanel extends JPanel{
         public OrderInformationPanel(){
             setLayout(new BorderLayout());
             JPanel titlePanel = new JPanel();
@@ -28,33 +32,38 @@ public class OrderManagerPanel extends JPanel {
             infoPanel.setLayout(new GridLayout(3,2));
             
             JPanel line1InfoPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
-            JLabel idLabel = new JLabel("       Mã Hóa Đơn:",JLabel.RIGHT);
-            JTextField textID = new JTextField("\t\t");
+            JLabel idLabel = new JLabel(" Mã Hóa Đơn:",JLabel.RIGHT);
+            textIDOrder = new JTextField("");
+            textIDOrder.setPreferredSize(new Dimension(50,20));
             line1InfoPanel.add(idLabel);
-            line1InfoPanel.add(textID);
+            line1InfoPanel.add(textIDOrder);
             
             JPanel line2InfoPanel = new JPanel();
             line2InfoPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
             
             JLabel nameCusLabel = new JLabel("Tên Khách Hàng:");
-            JTextField textNameCus = new JTextField("\t\t");
+            textNameCus = new JTextField("");
+            textNameCus.setPreferredSize(new Dimension(160,20));
             line2InfoPanel.add(nameCusLabel);
             line2InfoPanel.add(textNameCus);
             
             JLabel idCusLabel = new JLabel("Mã Khách Hàng: ");
-            JTextField textIDC = new JTextField("\t");
+            textIDC = new JTextField("");
+            textIDC.setPreferredSize(new Dimension(50,20));
             line2InfoPanel.add(idCusLabel);
             line2InfoPanel.add(textIDC);
             
             JPanel line3InfoPanel = new JPanel();
             line3InfoPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
             
-            JLabel orderDateLabel = new JLabel("    Ngày đặt hàng:");
-            JTextField textDateOrder = new JTextField("\t\t");
+            JLabel orderDateLabel = new JLabel("Ngày đặt hàng:");
+            textDateOrder = new JTextField("");
+            textDateOrder.setPreferredSize(new Dimension(172,20));
             line3InfoPanel.add(orderDateLabel);line3InfoPanel.add(textDateOrder);
             
             JLabel deliveryDateLabel = new JLabel("Ngày giao hàng: ");
-            JTextField textDelivery = new JTextField("\t\t");
+            textDelivery = new JTextField("");
+            textDelivery.setPreferredSize(new Dimension(172,20));
             line3InfoPanel.add(deliveryDateLabel);line3InfoPanel.add(textDelivery);
             
             infoPanel.add(line1InfoPanel);
@@ -64,8 +73,8 @@ public class OrderManagerPanel extends JPanel {
             
             JPanel buttonPanel = new JPanel();
             buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-            JButton btnCreateOrder = new JButton("Tạo Hóa đơn");
-            JButton btnSearchOrder = new JButton("Tìm Hóa Đơn");
+            btnCreateOrder = new JButton("Tạo Hóa đơn");
+            btnSearchOrder = new JButton("Tìm Hóa Đơn");
             
             buttonPanel.add(btnCreateOrder);
             buttonPanel.add(btnSearchOrder);
@@ -74,7 +83,7 @@ public class OrderManagerPanel extends JPanel {
         }
     }
     
-    public static class ListInOrderPanel extends JPanel{
+    public class ListInOrderPanel extends JPanel{
         public ListInOrderPanel(){
             setLayout(new BorderLayout());
             setBorder(BorderFactory.createMatteBorder(1,0,1,0,new Color(0,0,0)));
@@ -84,37 +93,37 @@ public class OrderManagerPanel extends JPanel {
             
             JPanel line1 = new JPanel(new FlowLayout());
             JLabel idBookLabel = new JLabel("ID Sách:",JLabel.LEFT);
-            JTextField textIDB = new JTextField("");
+            textIDB = new JTextField("");
             textIDB.setPreferredSize(new Dimension(150,20));
             
             JPanel line2 = new JPanel(new FlowLayout());
             JLabel titleLabel = new JLabel("Tên Sách");
-            JTextField textTitle = new JTextField("\t\t");
+            textTitle = new JTextField("");
             textTitle.setPreferredSize(new Dimension(150,20));
             
             JPanel line3 = new JPanel(new FlowLayout());
             JLabel authorLabel = new JLabel("Tác Giả:");
-            JTextField textAuthor = new JTextField("");
+            textAuthor = new JTextField("");
             textAuthor.setPreferredSize(new Dimension(150,20));
             
             JPanel line4 = new JPanel(new FlowLayout());
             JLabel publishLabel = new JLabel("Nhà Xuất Bản");
-            JTextField textPulish = new JTextField("");
+            textPulish = new JTextField("");
             textPulish.setPreferredSize(new Dimension(120,20));
             
             JPanel line5 = new JPanel(new FlowLayout());
             JLabel priceLabel = new JLabel("Giá Sách");
-            JTextField textPrice = new JTextField("");
+            textPrice = new JTextField("");
             textPrice.setPreferredSize(new Dimension(150,20));
 
             JPanel line6 = new JPanel(new FlowLayout());
             JLabel yearPubLabel = new JLabel("Năm Xuất Bản");
-            JTextField textYearPub = new JTextField();
+            textYearPub = new JTextField();
             textYearPub.setPreferredSize(new Dimension(130,20));
             
             JPanel line7 = new JPanel(new FlowLayout());
-            JButton buttonAddBook = new JButton("Thêm");
-            JButton buttonFind = new JButton("Tìm");
+            buttonAddBook = new JButton("Thêm");
+            buttonFind = new JButton("Tìm");
             
             
             
@@ -135,10 +144,10 @@ public class OrderManagerPanel extends JPanel {
             JPanel tablePanel = new JPanel();
             tablePanel.setLayout(new BorderLayout());
             String[]columns = {"STT","Mã Sách","Tên Sách","Tác Giả","Đơn Giá","Số Lượng","Thành Tiền"};
-            DefaultTableModel model = new DefaultTableModel(columns,0);
-            JTable table = new JTable(model);
+            model = new DefaultTableModel(columns,0);
+            table = new JTable(model);
             table.getTableHeader().setReorderingAllowed(false);
-            JScrollPane scrollPane = new JScrollPane(table);
+            scrollPane = new JScrollPane(table);
             
             
             tablePanel.add(scrollPane);
