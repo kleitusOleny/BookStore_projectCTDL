@@ -9,7 +9,7 @@ import java.util.List;
 
 public class BookStoreManagerPanel extends JPanel {
     CardLayout card;
-    JPanel mainPanel, bookPanel, mainMenuPanel,orderPanel;
+    JPanel mainPanel, bookPanel, mainMenuPanel,orderPanel,customerPanel;
     public BookStoreManagerPanel(){
         setLayout(new BorderLayout());
         
@@ -19,12 +19,14 @@ public class BookStoreManagerPanel extends JPanel {
         bookPanel = new BookPanel();
         mainMenuPanel = new MainMenuPanel();
         orderPanel = new OrderManagerPanel();
-        
+        customerPanel = new CustomerManagerPanel();
+
         mainPanel.add("bookPanel",bookPanel);
         mainPanel.add("mainPanel",mainMenuPanel);
         mainPanel.add("orderPanel",orderPanel);
-        
-        showLayout("orderPanel");
+        mainPanel.add("customerPanel",customerPanel);
+
+        showLayout("customerPanel");
         
         add(mainPanel,BorderLayout.CENTER);
         add(createSidePanel(),BorderLayout.WEST);
@@ -56,6 +58,7 @@ public class BookStoreManagerPanel extends JPanel {
                 case 0: btn.addActionListener(e -> this.showLayout("bookPanel"));
                 case 1: btn.addActionListener(e -> this.showLayout("mainPanel"));
                 case 2: btn.addActionListener(e -> this.showLayout("orderPanel"));
+                case 3: btn.addActionListener(e -> this.showLayout("customerPanel"));
             }
             res.add(btn);
         }
