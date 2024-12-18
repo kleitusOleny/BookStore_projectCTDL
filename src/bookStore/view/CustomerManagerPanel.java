@@ -75,7 +75,6 @@ public class CustomerManagerPanel extends JPanel {
         buttonPanel.add(resetButton);
         buttonPanel.add(checkButton);
         groupPanel.add(buttonPanel);
-
         return groupPanel;
     }
 
