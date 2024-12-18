@@ -10,7 +10,7 @@ public class MainFrame extends JFrame {
     JMenuItem mniExit,mniUpdate, mniBookManager, mniMainMenu;
     JPanel mainPanel;
     ActionListener actionMenu;
-    public MainFrame() throws HeadlessException {
+    public MainFrame(){
         setTitle("Book Store Manager");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1080, 720);
