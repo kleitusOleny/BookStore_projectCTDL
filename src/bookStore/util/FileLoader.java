@@ -5,14 +5,12 @@ import bookStore.model.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class FileLoader {
-    public Set loadBook() throws IOException{
+    public static Map<Book,Integer> loadBook() throws IOException{
         Book book = null;
-        Set<Book> setBook = new HashSet<>();
+        Map<Book,Integer> result = new HashMap<>();
         String file = "src/data/listbook.txt";
         BufferedReader br = new BufferedReader(new FileReader(file));
         
@@ -20,11 +18,12 @@ public class FileLoader {
         
         while ((line = br.readLine()) != null) {
             String[] str = line.split("\\|");
-            book = new Book(str[0].trim(),str[1].trim(),Double.parseDouble(str[2].trim()),str[3].trim(),str[4].trim(),str[5].trim(),Integer.parseInt(str[6].trim()),Integer.parseInt(str[7].trim()));
-            setBook.add(book);
+            String idBook = null;
+            book = new Book(str[0].trim(),str[1].trim(),Double.parseDouble(str[2].trim()),str[7].trim(),str[3].trim(),str[4].trim(), Integer.parseInt(str[5].trim()),Integer.parseInt(str[6].trim()));
+            result.put(book,Integer.parseInt(str[8].trim()));
         }
         br.close();
-        return setBook;
+        return result;
     }
     
     public Set<Customer> loadCustomer() throws IOException{
@@ -46,6 +45,6 @@ public class FileLoader {
     public static void main(String[] args) throws IOException {
         FileLoader loader = new FileLoader();
         System.out.println(loader.loadBook());
-        System.out.println(loader.loadCustomer());
+//        System.out.println(loader.loadCustomer());
     }
 }

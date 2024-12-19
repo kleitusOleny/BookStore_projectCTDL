@@ -1,8 +1,12 @@
 package bookStore.view;
 
+import bookStore.model.BookManager;
+import bookStore.util.FileLoader;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 
 public class MainFrame extends JFrame {
     JMenuBar menuBar;
@@ -65,7 +69,8 @@ public class MainFrame extends JFrame {
         return menuBar;
     }
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         new MainFrame();
+        BookManager bookManager = new BookManager(FileLoader.loadBook());
     }
 }

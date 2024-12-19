@@ -4,24 +4,22 @@ public class Book {
     private String idBook;
     private String title;
     private double price;
+    private String type;
     private String author;
     private String publish;
-    private String size;
     private int numPage;
     private int yearRelease;
     
-    public Book(String idBook, String title, double price, String author, String publish, String size, int numPage, int yearRelease) {
+    public Book(String idBook, String title, double price, String type, String author, String publish, int numPage, int yearRelease) {
         this.idBook = idBook;
         this.title = title;
         this.price = price;
+        this.type = type;
         this.author = author;
         this.publish = publish;
-        this.size = size;
         this.numPage = numPage;
         this.yearRelease = yearRelease;
     }
-    
-    
     //GET & SET method
     public String getIdBook() {
         return idBook;
@@ -62,15 +60,7 @@ public class Book {
     public void setPublish(String publish) {
         this.publish = publish;
     }
-    
-    public String getSize() {
-        return size;
-    }
-    
-    public void setSize(String size) {
-        this.size = size;
-    }
-    
+
     public int getNumPage() {
         return numPage;
     }
@@ -87,6 +77,14 @@ public class Book {
         this.yearRelease = yearRelease;
     }
     
+    public String getType() {
+        return type;
+    }
+    
+    public void setType(String type) {
+        this.type = type;
+    }
+    
     @Override
     public String toString() {
         return "Book{" +
@@ -95,7 +93,6 @@ public class Book {
                 ", price=" + price +
                 ", author='" + author + '\'' +
                 ", pulish='" + publish + '\'' +
-                ", size='" + size + '\'' +
                 ", numPage=" + numPage +
                 ", yearRelease=" + yearRelease +
                 '}';
@@ -112,7 +109,6 @@ public class Book {
                     this.price == that.price &&
                     this.author.equals(that.author) &&
                     this.publish.equals(that.publish) &&
-                    this.size.equals(that.size) &&
                     this.numPage == that.numPage &&
                     this.yearRelease == that.yearRelease;
         }

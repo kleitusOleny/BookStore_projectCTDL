@@ -4,6 +4,7 @@ import bookStore.model.OrderManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,13 +21,13 @@ public class BookStoreManagerPanel extends JPanel {
         bookPanel = new BookManagerPanel();
         orderPanel = new OrderManagerPanel();
         customerPanel = new CustomerManagerPanel();
-
-        mainPanel.add("bookPanel",bookPanel);
+        
         mainPanel.add("mainPanel",mainMenuPanel);
+        mainPanel.add("bookPanel",bookPanel);
         mainPanel.add("orderPanel",orderPanel);
         mainPanel.add("customerPanel",customerPanel);
 
-        showLayout("customerPanel");
+        showLayout("mainPanel");
         
         add(mainPanel,BorderLayout.CENTER);
         add(createSidePanel(),BorderLayout.WEST);
@@ -50,8 +51,7 @@ public class BookStoreManagerPanel extends JPanel {
             btn = new JButton(stringList.get(i));
             btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
             btn.setHorizontalAlignment(SwingConstants.CENTER);
-            btn.setBackground(new Color(0,0,0,0));
-            btn.setOpaque(false);
+            btn.setBackground(new Color(255,250,250));
             btn.setPreferredSize(new Dimension(180,20));
             btn.setFocusable(false);
             btn.setFont(new Font("Arial", Font.BOLD, 15));
