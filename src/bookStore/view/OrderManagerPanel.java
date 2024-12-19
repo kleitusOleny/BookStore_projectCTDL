@@ -3,12 +3,16 @@ package bookStore.view;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import java.awt.*;
 
 public class OrderManagerPanel extends JPanel {
     JButton btnCreateOrder,btnSearchOrder, buttonAddBook, buttonFind;
-    JTextField textIDOrder, textNameCus, textIDC, textDateOrder, textDelivery;
-    JTextField textIDB,textTitle,textAuthor, textPulish, textPrice, textYearPub;
+    JButton btnRemoveOrder, btnChangeOrder, btnTotal;
+    JTextField textIDOrder, textNameCus, textIDC, textDateOrder, textDelivery;//textField cua Panel thong tin hoa don
+    JTextField textIDB,textTitle,textAuthor, textPulish, textPrice, textYearPub;//textField cua Panel Thong tin sach trong hoa don
+    JTextField textTotalPrice, textDiscount, textPriceAfterDiscount;
+    //textField cua panel tinh tien
     DefaultTableModel model;
     JTable table;
     JScrollPane scrollPane;
@@ -78,6 +82,7 @@ public class OrderManagerPanel extends JPanel {
             setLayout(new BorderLayout());
             setBorder(BorderFactory.createMatteBorder(1,0,1,0,new Color(0,0,0)));
             
+            //Panel the hien thong tin sach, tim sach, them sach
             JPanel boundInfoBookPanel = new JPanel(new BorderLayout());
             JPanel insertBookPanel = new JPanel();
             insertBookPanel.setLayout(new GridLayout(6,2));
@@ -129,7 +134,12 @@ public class OrderManagerPanel extends JPanel {
             boundInfoBookPanel.add(buttonPanel,BorderLayout.CENTER);
             add(boundInfoBookPanel,BorderLayout.WEST);
             
+            JPanel orderInfoPanel = new JPanel(new BorderLayout());
+            TitledBorder titledBorder1 = new TitledBorder("Hóa Đơn");
+            titledBorder1.setTitleFont(new Font("Arial",Font.BOLD,15));
+            orderInfoPanel.setBorder(titledBorder1);
             
+            //Panel chua ban hoa don
             JPanel tablePanel = new JPanel();
             tablePanel.setLayout(new BorderLayout());
             String[]columns = {"STT","Mã Sách","Tên Sách","Tác Giả","Đơn Giá","Số Lượng","Thành Tiền"};
@@ -138,9 +148,39 @@ public class OrderManagerPanel extends JPanel {
             table.getTableHeader().setReorderingAllowed(false);
             scrollPane = new JScrollPane(table);
             
-            
             tablePanel.add(scrollPane);
-            add(tablePanel);
+            orderInfoPanel.add(tablePanel);
+            
+            //panel thong ke tien
+            JPanel boundStatsPanel = new JPanel(new BorderLayout());
+            
+            JPanel statsPanel = new JPanel(new GridLayout(1,6));
+            JLabel labelTotal = new JLabel("Tổng Thành Tiền");
+            textTotalPrice = new JTextField();
+            
+            JLabel discountLabel = new JLabel("Giảm Giá");
+            textDiscount = new JTextField();
+            
+            JLabel totalPriceLabel = new JLabel("Giá sau khi giảm");
+            textPriceAfterDiscount = new JTextField();
+            
+            statsPanel.add(labelTotal);statsPanel.add(textTotalPrice);
+            statsPanel.add(discountLabel);statsPanel.add(textDiscount);
+            statsPanel.add(totalPriceLabel);statsPanel.add(textPriceAfterDiscount);
+            boundStatsPanel.add(statsPanel,BorderLayout.CENTER);
+            
+            JPanel statusButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+            btnRemoveOrder = new JButton("Xóa");
+            btnChangeOrder = new JButton("Sửa");
+            btnTotal = new JButton("Thanh Toán");
+            
+            statusButtonPanel.add(btnRemoveOrder);
+            statusButtonPanel.add(btnChangeOrder);
+            statusButtonPanel.add(btnTotal);
+            boundStatsPanel.add(statusButtonPanel,BorderLayout.SOUTH);
+            
+            tablePanel.add(boundStatsPanel,BorderLayout.SOUTH);
+            add(orderInfoPanel,BorderLayout.CENTER);
             
         }
     }
