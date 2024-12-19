@@ -58,9 +58,8 @@ public class BookStoreManagerPanel extends JPanel {
             btn.setBorder(BorderFactory.createMatteBorder(0,0,1,0,Color.BLACK));
             switch (i){
                 case 0: btn.addActionListener(e -> this.showLayout("bookPanel"));
-                case 1: btn.addActionListener(e -> this.showLayout("mainPanel"));
+                case 1: btn.addActionListener(e -> this.showLayout("customerPanel"));
                 case 2: btn.addActionListener(e -> this.showLayout("orderPanel"));
-                case 3: btn.addActionListener(e -> this.showLayout("customerPanel"));
             }
             res.add(btn);
         }
