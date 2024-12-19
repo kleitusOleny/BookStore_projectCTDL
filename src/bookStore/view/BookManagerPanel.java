@@ -50,7 +50,7 @@ public class BookManagerPanel extends JPanel {
             insertInfoPanel.add(priceLabel);
             insertInfoPanel.add(textPrice);
             
-            JLabel yearPubLabel = new JLabel("Năm Xuất Bản: ");
+            JLabel yearPubLabel = new JLabel("Năm Xuất Bản:");
             textYearPub = new JTextField();
             insertInfoPanel.add(yearPubLabel);
             insertInfoPanel.add(textYearPub);
