@@ -10,7 +10,7 @@ import java.util.Map;
 public class BookManager {
     private Map<Book, Integer> listBook;
     
-    public BookManager() {
+    public BookManager(Map<Book, Integer> listBook) {
         this.listBook = new HashMap<>();
     }
     
@@ -41,13 +41,4 @@ public class BookManager {
         return null;
     }
     
-    public static void main(String[] args) throws IOException {
-        Iterator<Book> iterator = (new FileLoader()).loadBook().iterator();
-        Book book = iterator.next();
-        BookManager bookManager = new BookManager();
-        bookManager.addBook(book, 5);
-        bookManager.addBook(book, 5);
-        System.out.println(bookManager.listBook);
-        System.out.println(bookManager.isAvailable("001"));
-    }
 }
