@@ -6,6 +6,13 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class CustomerManagerPanel extends JPanel {
+    JButton addBtn, deleteBtn;
+    JTextField textSmallId, textLargeId, textCustomerName, textCustomerBirth, textTypeCustomer;
+    JButton restartBtn, resetBtn, checkBtn, findBtn;
+    DefaultTableModel tableModel;
+    JTable table;
+    JScrollPane scrollPane;
+
     CustomerManagerPanel(){
         setLayout(new BorderLayout());
 
@@ -24,17 +31,17 @@ public class CustomerManagerPanel extends JPanel {
         JPanel leftPanel = new JPanel(new GridLayout(4, 2, 5, 5)); // 4 hàng, 2 cột, khoảng cách 5px
         JLabel customerId = new JLabel("Mã khách hàng:");
         JPanel idInputPanel = new JPanel(new BorderLayout());
-        JTextField textSmallId = new JTextField(5); // Ô nhỏ
+        textSmallId = new JTextField(5); // Ô nhỏ chứa STT
         textSmallId.setEditable(false);
-        JTextField textLargeId = new JTextField(); // Ô lớn
+        textLargeId = new JTextField(); // Ô lớn chứa mã KH
         idInputPanel.add(textSmallId, BorderLayout.WEST);
         idInputPanel.add(textLargeId, BorderLayout.CENTER);
         JLabel customerName = new JLabel("Tên khách hàng:");
-        JTextField textCustomerName = new JTextField();
-        JLabel customerBirth = new JLabel("Ngày sinh khách hàng:");
-        JTextField textCustomerBirth = new JTextField();
-        JLabel typeCustomer = new JLabel("Loại khách hàng:");
-        JTextField textTypeCustomer = new JTextField();
+        textCustomerName = new JTextField();
+        JLabel customerBirth = new JLabel("Tài khoản khách hàng:");
+        textCustomerBirth = new JTextField();
+        JLabel typeCustomer = new JLabel("Mật khẩu khách hàng:");
+        textTypeCustomer = new JTextField();
         leftPanel.add(customerId);
         leftPanel.add(idInputPanel);
         leftPanel.add(customerName);
@@ -46,8 +53,8 @@ public class CustomerManagerPanel extends JPanel {
 
         // Panel bên phải
         JPanel rightPanel = new JPanel(new GridLayout(2, 1, 10, 10)); // 2 hàng, 1 cột, khoảng cách 10px
-        JButton addBtn = new JButton("Thêm Khách Hàng");
-        JButton deleteBtn = new JButton("Xóa Khách Hàng");
+        addBtn = new JButton("Thêm Khách Hàng");
+        deleteBtn = new JButton("Xóa Khách Hàng");
         rightPanel.add(addBtn);
         rightPanel.add(deleteBtn);
 
@@ -58,22 +65,38 @@ public class CustomerManagerPanel extends JPanel {
         return informationPanel;
     }
 
+    int showConfirmDialog() {
+        return JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn thực hiện hành động trên?", "Xác nhận", JOptionPane.YES_NO_OPTION);
+    };
+
     JPanel moreButtonPlease(){
-        // bruh
+        // Chức năng làm việc chung với table phía dưới
         JPanel groupPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 20));
         JPanel buttonPanel = new JPanel(new GridLayout(1, 4, 10, 10));
-        JButton restartButton = new JButton("Làm mới danh sách");
-        restartButton.setPreferredSize(new Dimension(150,50));
-        JButton resetButton = new JButton("Xoá danh sách");
-        resetButton.setPreferredSize(new Dimension(150,50));
-        JButton checkButton = new JButton("Kiểm tra khách hàng"); // Kiểm tra xem khách hàng có tồn tại không
-        checkButton.setPreferredSize(new Dimension(150,50));
-        JButton findButton = new JButton("Tìm kiếm");
-        findButton.setPreferredSize(new Dimension(150,50));
-        buttonPanel.add(findButton);
-        buttonPanel.add(restartButton);
-        buttonPanel.add(resetButton);
-        buttonPanel.add(checkButton);
+        restartBtn = new JButton("Làm mới danh sách");
+        restartBtn.setPreferredSize(new Dimension(150,50));
+        resetBtn = new JButton("Xoá danh sách");
+        resetBtn.addActionListener(e -> {
+            int option = showConfirmDialog();
+            if(option == JOptionPane.YES_OPTION) {
+                // Thực hiện hành động
+            }
+        });
+        resetBtn.setPreferredSize(new Dimension(150,50));
+        checkBtn = new JButton("Xác nhận thay đổi");
+        checkBtn.setPreferredSize(new Dimension(150,50));
+        checkBtn.addActionListener(e -> {
+            int option = showConfirmDialog();
+            if(option == JOptionPane.YES_OPTION) {
+                // Thực hiện hành động
+            }
+        });
+        findBtn = new JButton("Tìm kiếm");
+        findBtn.setPreferredSize(new Dimension(150,50));
+        buttonPanel.add(checkBtn);
+        buttonPanel.add(findBtn);
+        buttonPanel.add(restartBtn);
+        buttonPanel.add(resetBtn);
         groupPanel.add(buttonPanel);
         return groupPanel;
     }
@@ -84,11 +107,11 @@ public class CustomerManagerPanel extends JPanel {
             TitledBorder titledBorder = BorderFactory.createTitledBorder("Bảng thông tin khách hàng");
             titledBorder.setTitleFont(new Font("Arial", Font.BOLD, 20));
             tablePanel.setBorder(titledBorder);
-            String[] columns = {"STT", "Mã Khách Hàng", "Tên Khách Hàng", "Ngày Sinh", "Loại"};
-            DefaultTableModel tableModel = new DefaultTableModel(columns, 0);
-            JTable table = new JTable(tableModel);
+            String[] columns = {"STT", "Mã Khách Hàng", "Tên Khách Hàng", "Ngày Sinh", "Loại", "Tài Khoản", "Mật Khẩu"};
+            tableModel = new DefaultTableModel(columns, 0);
+            table = new JTable(tableModel);
             table.getTableHeader().setReorderingAllowed(false);
-            JScrollPane scrollPane = new JScrollPane(table);
+            scrollPane = new JScrollPane(table);
             tablePanel.add(scrollPane);
 
             return tablePanel;
